@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+nav {
+  height: 100px;
+  background: #dcd9e4;
+  width: 100%;
+}
+
+label {
+  padding: 0 0;
+  margin: 0 0;
+}
+
+nav ul {
+  float: right;
+  margin-right: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  padding-top: 30px;
+  position: relative;
+}
+
+.li1 {
+  margin-left: 40px;
+}
+
+.li2 {
+  margin-left: 120px;
+  margin-right: 20px;
+}
+
+.li3 {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.li1 a:hover {
+  color: #3671d6;
+}
+
+.li1 a::before {
+  content: "";
+  display: block;
+  height: 5px;
+  width: 0%;
+  background-color: #3671d6;
+  position: absolute;
+  top: 0;
+
+  transition: all ease-in-out 250ms;
+}
+
+.li1 a:hover::before {
+  width: 100%;
+}
+
+.button1 {
+  background-color: #42b8d5;
+  border: none;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 0px;
+  border-radius: 12px;
+  width: 80px;
+  font-size: 15px;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+#header1::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.navBarlogo {
+  float: left;
+  margin: 0 0;
+}
+
+.checkbtn {
+  font-size: 30px;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  padding-top: 10px;
+  display: none;
+}
+#check {
+  display: none;
+}
+
+@media (max-width: 952px) {
+  label.label_logo {
+    font-size: 30px;
+    padding-left: 50px;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+}
+@media (max-width: 858px) {
+  .checkbtn {
+    display: block;
+  }
+  ul {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 80px;
+    background: #dcd9e4;
+    left: -100%;
+    text-align: center;
+    transition: all 0.5s;
+  }
+  nav ul li {
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a {
+    font-size: 20px;
+  }
+  a:hover,
+  a.active {
+    background: none;
+    color: #42b8d5;
+  }
+  #check:checked ~ ul {
+    left: 0;
+  }
+}
