@@ -17,6 +17,7 @@ import Bookmarks from './Pages/Bookmarks';
 import Profile from './Pages/Profile';
 import Feed from './Pages/Feed';
 import Login from './Pages/Login';
+import Signup from './Pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
   },
 
 ]);

@@ -1,0 +1,83 @@
+.gif_image{
+    background-color: #dcd9e4;
+    height: 600px;
+}
+
+.gif{
+    margin-left: 0px;
+    background-color: #dcd9e4;
+    width: 32%;
+    height: 100%;
+    float: left;
+}
+
+
+
+.image_form{
+    width: 68%;
+    height: 100%;
+    margin: 0 0;
+    float: left;
+    /* background-color: green; */
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+}
+
+.form{
+    margin: 10% 15%;
+    background-color: azure;
+    width:70%;
+    height:80%;
+    padding: 0% 0%;
+}
+
+.input{
+    /* border-radius: 25px;
+    border: 2px solid  azure ; */
+    background-color: #dcd9e4;
+    width: 80%;
+
+    margin: 0 10%;
+    /* padding: 20px; 
+   
+    height: 15px; */
+    font-family: 'Alegreya Sans', sans-serif; 
+    /* text-align: justify;
+    font-size: 17px;
+    margin-left: 20%;
+    margin-right: 30%; */
+    
+}
+.form h2{
+    font-size: 30px;
+    width: 60%;
+    height: 5%;
+    display: inline-block;
+    margin-left: 15%;
+    margin-right: 25%;
+    
+    font-family: 'Alegreya Sans', sans-serif; 
+}
+
+.submitButton{
+    background-color: #42b8d5;
+    border: none;
+    color: white;
+    /* padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block; */
+    font-size: 12px;
+    margin-top: 3%;
+    margin-left: 30%;
+    margin-right: 40%;
+    border-radius: 12px;
+    height: 10%;
+    width: 20%;
+    font-size: 15px;
+  }
+
+  .submitButton:hover{
+    background-color:  #dcd9e4;
+    color: #42b8d5 ;
+  }

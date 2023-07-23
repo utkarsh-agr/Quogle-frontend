@@ -1,6 +1,6 @@
 import girl from "../girlWalking.gif"
-import "./Login.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/Login.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightToBracket, faFaceGrinWink } from '@fortawesome/free-solid-svg-icons';
 import Base1 from "../components/Base1";
