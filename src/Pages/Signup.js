@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, Container, FormGroup, Form, Input } from "reactstrap";
+import { Button, Card, CardBody, CardFooter, CardHeader, Container, FormGroup, Form, Input, FormFeedback } from "reactstrap";
 import Base1 from "../components/Base1";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faFaceGrinWink } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +7,14 @@ import loader from "../quogle-loader.gif"
 import { useState } from "react";
 import { signup } from "../Services/user-service";
 
+import {NavLink} from "reactstrap";
+import { NavLink as ReactLink, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Signup=()=>{ 
+
+  const navigate=useNavigate();
 
   const [data,setData]=useState({
     userFullName:'',
@@ -27,6 +34,15 @@ const Signup=()=>{
   const submitForm=(event)=>{
     event.preventDefault();
 
+    if(error.isError){
+
+        
+        toast.error("Data invalid, correct to submit..");
+        setError({...error,isError:false})
+        return;
+      
+    }
+
     console.log(data);
 
     //Validate the data
@@ -35,10 +51,45 @@ const Signup=()=>{
     signup(data).then((resp)=>{
       console.log(resp)
       console.log("successfully registered")
+
+      toast.success("Successfully registered!! Kindly login to continue.. ", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
+
+        setData({
+          userFullName:'',
+          userEmail:'',
+          userPassword:''
+        });
+
+       setTimeout(()=>{
+          navigate('/login');
+       },3000);
+      
+     
     }).catch((error)=>{
       console.log(error);
       console.log("error log");
-    })
+      
+      setError({
+        errors:error,
+        isError:true
+      });
+
+      if(error.response?.data?.message? true:false){
+        toast.error(error.response?.data?.message);
+        setError({...error,isError:false});
+      }
+      
+
+    });
 
 }
 
@@ -68,15 +119,42 @@ const Signup=()=>{
     
                     <FormGroup>
 
-                        <Input type="text" className="input" id="fullname" name="userFullName" placeholder="Enter your Full Name" onChange={(e)=>handleChange(e,'userFullName')} value={data.userFullName} style={{marginTop:"3%",marginBottom:0}} />
+                        <Input type="text" className="input" id="fullname" name="userFullName" placeholder="Enter your Full Name" onChange={(e)=>handleChange(e,'userFullName')} value={data.userFullName} style={{marginTop:"3%",marginBottom:0}} invalid={error.errors?.response?.data?.userFullName? true:false} />
+                        
+
+                         <FormFeedback style={{marginLeft:"10%"}}>
+                          {error.errors?.response?.data?.userFullName }
+                         </FormFeedback>
+
+                         <br />
+                    </FormGroup>
+
+                    <FormGroup>
+
+                        <Input type="text" className="input" id="email" name="userEmail" placeholder="Enter your email" onChange={(e)=>handleChange(e,'userEmail')} value={data.userEmail} style={{marginTop:"3%",marginBottom:0}} invalid={error.errors?.response?.data?.userEmail? true:false} />
+                        <FormFeedback style={{marginLeft:"10%"}}>
+                          {error.errors?.response?.data?.userEmail }
+                         </FormFeedback>
                          <br />
 
-                        <Input type="email" className="input" id="email" name="userEmail" placeholder="Enter your email" onChange={(e)=>handleChange(e,'userEmail')} value={data.userEmail} style={{marginTop:"3%",marginBottom:0}} />
-                         <br />
-                        <Input type="password" className="input" id="password" name="userPassword" onChange={(e)=>handleChange(e,'userPassword')} value={data.userPassword} placeholder="Enter your password" style={{marginTop:"3%",marginBottom:0}} /><br />
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Input type="password" className="input" id="password" name="userPassword" onChange={(e)=>handleChange(e,'userPassword')} value={data.userPassword} placeholder="Enter your password" style={{marginTop:"3%",marginBottom:0}} invalid={error.errors?.response?.data?.userPassword? true:false} />
+                        <FormFeedback style={{marginLeft:"10%"}}>
+                          {error.errors?.response?.data?.userPassword }
+                         </FormFeedback>
+                       
+
+                    </FormGroup>
+
                         <Button className="submitButton" type="submit">Quogle&nbsp;<FontAwesomeIcon icon={faFaceGrinWink} /></Button>
     
-                    </FormGroup>
+                    
+
+                    <br/>
+
+                      <NavLink tag={ReactLink} to="/login" style={{textAlign:"right",color:"blue"}}>Login here!!</NavLink>
                     
                     </Form>
     
@@ -93,6 +171,8 @@ const Signup=()=>{
             </Container>
     
           </div>
+
+          <ToastContainer/>
     
           </Base1>
       );

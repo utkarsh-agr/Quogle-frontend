@@ -4,9 +4,11 @@ import "./css/Login.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightToBracket, faFaceGrinWink } from '@fortawesome/free-solid-svg-icons';
 import Base1 from "../components/Base1";
-import { Button, Card, CardBody, CardFooter, CardHeader, Container, Form, FormGroup, Input } from "reactstrap";
-import { useEffect, useState } from "react";
+import { Button, Card, CardBody, CardFooter, CardHeader, Container, Form, FormFeedback, FormGroup, Input } from "reactstrap";
+import { useState } from "react";
 import { logIn } from "../Services/user-service";
+import {NavLink} from "reactstrap";
+import { NavLink as ReactLink } from "react-router-dom";
 
 const Login=()=> {
 
@@ -33,6 +35,7 @@ const Login=()=> {
   const submitForm=(event)=>{
       event.preventDefault();
 
+      
       console.log(data);
 
       //Validate the data
@@ -44,6 +47,12 @@ const Login=()=> {
       }).catch((error)=>{
         console.log(error);
         console.log("error log");
+
+        setError({
+          errors:error,
+          isError:true
+        })
+  
       })
 
   }
@@ -74,18 +83,37 @@ const Login=()=> {
               <Form onSubmit={(e)=>submitForm(e)}>
 
                 <FormGroup>
-                    <Input type="email" className="input" id="email" name="userEmail" placeholder="Enter your email" onChange={(e)=>handleChange(e,'username')} value={data.userEmail} style={{marginTop:"5%"}} />
+                    <Input type="text" className="input" id="email" name="userEmail" placeholder="Enter your email" onChange={(e)=>handleChange(e,'username') } value={data.username} style={{marginTop:"5%"}} invalid={error.errors?.response?.data?.username? true:false} />
+                    <FormFeedback style={{marginLeft:"10%"}}>
+                      {error.errors?.response?.data?.username}
+                    </FormFeedback>
                      <br />
-                    <Input type="password" className="input" id="password" name="userPassword" onChange={(e)=>handleChange(e,'password')} value={data.userPassword} placeholder="Enter your password" /><br />
-                    <Button className="submitButton" type="submit">Quogle&nbsp;<FontAwesomeIcon icon={faFaceGrinWink} /></Button>
 
                 </FormGroup>
+
+                <FormGroup>
+                    <Input type="password" className="input" id="password" name="userPassword" onChange={(e)=>handleChange(e,'password')} value={data.password} placeholder="Enter your password" invalid={error.errors?.response?.data?.password? true:false} />
+                    <FormFeedback style={{marginLeft:"10%"}}>
+                      {error.errors?.response?.data?.password}
+                    </FormFeedback>
+                    <br />
+                </FormGroup>    
+                    <Button className="submitButton" type="submit" style={{fontSize:"80%",width:"20%",marginLeft:"40%", marginRight:"40%"}}>Quogle&nbsp;<FontAwesomeIcon icon={faFaceGrinWink} /></Button>
+
+                    
+
+                
+                <br/>
+
+                <NavLink tag={ReactLink} to="/register" style={{textAlign:"right",color:"blue"}}>Register here!!</NavLink>
                 
                 </Form>
 
               </CardBody>
 
-              <CardFooter style={{display:"none"}}></CardFooter>
+              <CardFooter style={{display:"none"}}>
+              
+              </CardFooter>
                
                
 
