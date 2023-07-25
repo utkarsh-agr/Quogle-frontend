@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/Quogle-frontend/static/css/main.7e1e1baf.css",
+    "main.js": "/Quogle-frontend/static/js/main.6afe8e7a.js",
+    "static/js/787.ab3fed01.chunk.js": "/Quogle-frontend/static/js/787.ab3fed01.chunk.js",
+    "static/media/girlWalking.gif": "/Quogle-frontend/static/media/girlWalking.2ddfbe75dbfd8f7b504b.gif",
+    "static/media/quogle-loader.gif": "/Quogle-frontend/static/media/quogle-loader.6c889af7c267ed16dce7.gif",
+    "static/media/quogle_loader_1400.gif": "/Quogle-frontend/static/media/quogle_loader_1400.6c889af7c267ed16dce7.gif",
+    "static/media/quogle_logo_250.png": "/Quogle-frontend/static/media/quogle_logo_250.aed8352ae35f6002e5ed.png",
+    "index.html": "/Quogle-frontend/index.html",
+    "main.7e1e1baf.css.map": "/Quogle-frontend/static/css/main.7e1e1baf.css.map",
+    "main.6afe8e7a.js.map": "/Quogle-frontend/static/js/main.6afe8e7a.js.map",
+    "787.ab3fed01.chunk.js.map": "/Quogle-frontend/static/js/787.ab3fed01.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e1e1baf.css",
+    "static/js/main.6afe8e7a.js"
+  ]
+}
